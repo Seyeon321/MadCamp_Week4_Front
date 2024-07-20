@@ -1,0 +1,83 @@
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e3f6f5;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.content {
+    flex: 1;
+    padding: 3vw;
+    padding-left: 15vw;
+    background-color: #e3f6f5;
+}
+
+.title {
+    font-size: 2.5vw;
+    font-weight: bold;
+    margin-bottom: 4vw;
+}
+
+.account-info { /*acount info 카드*/
+    background-color: #fffffe;
+    width: 20vw;
+    height: 15vw;
+    margin-bottom: 2vw;
+    position: relative;
+    text-align: left;
+    padding: 2vw;
+}
+
+.info-card {
+    background-color: #fffffe;
+    height: 8vw;
+    width: 18vw;
+    padding: 1vw;
+    margin-right: 2vw;
+    position: relative;
+    text-align: center;
+
+}
+
+.account-details p {
+    margin-top: 2vw;
+}
+
+.card-title {
+    font-size: 1.5vw;
+}
+
+.info-row {
+    display: flex;
+    position: relative;
+    top: 2vw;
+}
+
+strong {
+    font-size: 1.2vw;
+    margin-bottom: 0.5vw;
+}
+
+span {
+    font-size: 1vw;
+    margin: 0.5vw;
+}
+
+div.account-info button#save-id-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1vw;
+    cursor: pointer;
+    margin-top: 1vw;
+}
+div.account-info button#save-id-button:hover {
+    background-color: #45a049;
+}

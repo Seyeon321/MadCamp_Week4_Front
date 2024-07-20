@@ -1,0 +1,110 @@
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e3f6f5;
+}
+
+.admin-setting {
+    width: 100%;
+    height: 100vh;
+    padding: 2vw;
+    background-color: #e3f6f5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2vw;
+}
+
+.title-section {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.create-new-class, .class-info {
+    font-size: 2vw;
+    font-weight: bold;
+}
+
+.create-new-class1 {
+    background-color: #ffd803;
+    width: 3vw;
+    height: 3vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5vw;
+}
+
+.plus-sign {
+    font-size: 2vw;
+    font-weight: bold;
+    color: black;
+    cursor: pointer;
+}
+
+.class-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+}
+
+.class-item {
+    background-color: #fffffe;
+    width: 20vw;
+    height: 4vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5vw;
+    border-radius: 0.5vw;
+    cursor: pointer;  /* Add cursor pointer to indicate it's clickable */
+}
+
+.class-item.selected {
+    background-color: #ffd803;  /* Change background color to indicate selection */
+    border: 2px solid #000;  /* Add border to indicate selection */
+}
+
+.class-stu-list {
+    background-color: #fffffe;
+    width: 20vw;
+    padding: 1vw;
+    border-radius: 0.5vw;
+}
+
+.student-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1vw;
+}
+
+.student-name {
+    font-size: 1.5vw;
+}
+
+.student-input {
+    font-size: 1.5vw;
+    padding: 0.5vw;
+    width: 14vw;
+}
+
+.action-button {
+    background-color: #ffd803;
+    border: none;
+    border-radius: 0.5vw;
+    padding: 0.5vw 1vw;
+    font-size: 1vw;
+    cursor: pointer;
+}
+
+.add-button {
+    color: green;
+}
+
+.delete-button {
+    color: red;
+}
