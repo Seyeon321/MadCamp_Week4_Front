@@ -7,29 +7,21 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     if (!cookieValue) {
         console.error('No access token found in cookies');
-        return; // 쿠키에 access token이 없으면 중단
+        return;
     }
 
     const token = cookieValue.split('=')[1];
-    console.log('token sent:', token);  // 쿠키에서 추출한 토큰 값을 로그로 출력
+    console.log('token sent:', token);
 
     try {
         const response = await fetch(`${ngrokUrl.url}/user/info`, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`,
-                'ngrok-skip-browser-warning': '69420'
             }
         });
 
         console.log('response:', response);
-
-        // const contentType = response.headers.get('content-type');
-        // if (!contentType || !contentType.includes('application/json')) {
-        //     const text = await response.text();
-        //     console.error('Expected JSON, got:', text);
-        //     throw new Error('Server did not return JSON'); // json형식 아니면 에러뜨게
-        // }
 
         if (response.ok) {
 
