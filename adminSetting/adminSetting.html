@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, width=device-width">
+    <title>Setting</title>
     <link rel="stylesheet" href="adminSetting.css" />
     <link rel="stylesheet" href="../sidebar/adminSidebar.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
@@ -21,6 +22,7 @@
             </div>
             <div class="class-list"></div>
         </div>
+
         <div class="right-container">
             <div class="title-section2">
                 <b class="class-info">분반 정보</b>
@@ -28,11 +30,14 @@
             <div class="class-stu-list">
                 <div class="student-info">
                     <input type="text" class="student-input" placeholder="학생 이름 입력">
-                    <button class="action-button add-button">추가</button>
+                    <button id="load-students-button" class="action-button">Load Students</button>
                 </div>
+                <div class="student-list">
                 <!-- Existing students will be populated dynamically -->
+                </div>
             </div>
         </div>
+
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', function() {

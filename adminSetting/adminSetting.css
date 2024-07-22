@@ -50,7 +50,7 @@ body {
     border-radius: 0.5vw;
 }
 
-.create-new-class1:hover{
+.create-new-class1:hover {
     background-color: #efce16;
 }
 
@@ -82,7 +82,7 @@ body {
 
 .class-item.selected {
     background-color: #ffd803;  /* Change background color to indicate selection */
-    border: 10px solid #000;  /* Add border to indicate selection */
+    border: 2px solid #000;  /* Add border to indicate selection */
 }
 
 .class-stu-list {
@@ -119,7 +119,7 @@ body {
     cursor: pointer;
 }
 
-.action-button:hover{
+.action-button:hover {
     background-color: #efce16;
 }
 
@@ -129,4 +129,28 @@ body {
 
 .delete-button {
     color: red;
+}
+
+.student-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+    width: 100%;
+}
+
+.student-item {
+    background-color: #f0f0f0;
+    padding: 0.5vw;
+    border-radius: 0.5vw;
+    cursor: pointer;
+}
+
+.student-item:hover {
+    background-color: #dcdcdc;
+}
+
+.no-teammates {
+    font-size: 1.5vw;
+    color: #555;
+    text-align: center;
 }

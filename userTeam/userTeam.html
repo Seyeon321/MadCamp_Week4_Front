@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Team</title>
+    <link rel="stylesheet" href="userTeam.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="left-container">
+        <div class="create-team-container">
+            <h2>Create Team</h2>
+            <div class="form-group">
+                <label for="week">Week:</label>
+                <input type="text" id="week" name="week" placeholder="Enter week">
+            </div>
+            <div class="form-group">
+                <label for="code">Code:</label>
+                <input type="text" id="code" name="code" placeholder="Enter code">
+            </div>
+            <div class="form-group">
+                <label for="teammate_num">Number of Teammates:</label>
+                <input type="text" id="teammate_num" name="teammate_num" placeholder="Select 2 or 3" readonly>
+                <div id="teammate-options" class="options">
+                    <div class="option" data-value="2">2</div>
+                    <div class="option" data-value="3">3</div>
+                </div>
+            </div>
+            <button id="button1">Submit</button>
+        </div>
+        <div class="join-team-container">
+            <h2>Join Team</h2>
+            <div class="form-group">
+                <label for="join-code">Code:</label>
+                <input type="text" id="join-code" name="join-code" placeholder="Enter code to join">
+            </div>
+            <button id="button2">Join</button>
+        </div>
+    </div>
+    <div class="right-container">
+        <h2>My Team</h2>
+        <div class="team-list-container">
+            <div class="form-group">
+                <label for="week2">Week:</label>
+                <input type="text" id="week2" name="week" placeholder="Select week" readonly>
+                <div id="week-options" class="options">
+                    <div class="week-option" data-value="1">1</div>
+                    <div class="week-option" data-value="2">2</div>
+                    <div class="week-option" data-value="3">3</div>
+                    <div class="week-option" data-value="4">4</div>
+                </div>
+            </div>
+            <button id="button3">Submit</button>
+        </div>
+    </div>
+    <script src="userTeam.js" type="module"></script>
+</body>
+</html>

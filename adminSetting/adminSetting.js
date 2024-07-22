@@ -10,17 +10,16 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     const token = cookieValue.split('=')[1];
     console.log('token sent:', token);
-
+//==============================token sent==============================
+//==============================분반 리스트 보여주기 - GET==============================
     let selectedClassId = null;
 
-    // Function to load existing classes
     async function loadClasses() {
         try {
             const response = await fetch(`${ngrokUrl.url}/admin/setting/classes`, {
                 method: 'GET',
                 headers: {
-                    'Authorization': `Bearer ${token}`,
-                    'ngrok-skip-browser-warning': '69420'
+                    'Authorization': `Bearer ${token}`
                 }
             });
 
@@ -30,6 +29,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 
                 const classes = responseData.class_id_list;  // Assuming the JSON has a "classes" key with an array
                 const classList = document.querySelector('.class-list');
+                classList.innerHTML = '';
                 classes.forEach(classItem => {
                     const classDiv = document.createElement('div');
                     classDiv.className = 'class-item';
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                             classDiv.classList.add('selected');
                             selectedClassId = classItem;
                             document.querySelector('.class-info').textContent = `${classItem}분반 정보`;
-                        }
+                        } console.log('selected class id:', selectedClassId);
                     });
                     classList.appendChild(classDiv);
                 });
@@ -55,12 +55,11 @@ document.addEventListener('DOMContentLoaded', async function() {
             console.error('Error fetching class list:', error);
         }
     }
-
-    // Load existing classes on page load
     await loadClasses();
 
-    // Add event listener for the plus button
+//==============================분반 추가 - POST==============================
     const plusButton = document.querySelector('.create-new-class1');
+    const selectedClassId_mod =  selectedClassId;
     if (plusButton) {
         plusButton.addEventListener('click', async () => {
             console.log('Plus button clicked');  // Debugging log
@@ -68,8 +67,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                 const response = await fetch(`${ngrokUrl.url}/admin/setting/addclass`, {
                     method: 'POST',
                     headers: {
-                        'Authorization': `Bearer ${token}`,
-                        'ngrok-skip-browser-warning': '69420'
+                        'Authorization': `Bearer ${token}`
                     }
                 });
 
@@ -82,14 +80,14 @@ document.addEventListener('DOMContentLoaded', async function() {
                     classItem.addEventListener('click', () => {
                         if (classItem.classList.contains('selected')) {
                             classItem.classList.remove('selected');
-                            selectedClassId = null;
+                            selectedClassId_mod = null;
                             document.querySelector('.class-info').textContent = '분반 정보';
                         } else {
                             document.querySelectorAll('.class-item').forEach(item => item.classList.remove('selected'));
                             classItem.classList.add('selected');
-                            selectedClassId = addClass.new_class_id;
+                            selectedClassId_mod = addClass.new_class_id;
                             document.querySelector('.class-info').textContent = `${addClass.new_class_id}분반 정보`;
-                        }
+                        } console.log('selected:', selectedClassId);
                     });
                     classList.appendChild(classItem);
                 } else {
@@ -100,9 +98,51 @@ document.addEventListener('DOMContentLoaded', async function() {
             }
         });
     } else {
-        console.error('Plus button not found');  // Debugging log
+        console.error('Plus button not found');
+    }
+//==============================학생 리스트 보여주기 - POST==============================
+    document.getElementById('load-students-button').addEventListener('click', async () => {
+        if (!selectedClassId) {
+            console.error('Please select a class first');
+            return;
+        }
+
+        await loadStudents(selectedClassId, token);
+    });
+
+    async function loadStudents(classId, token) {
+        console.log("selected class:", classId);
+        try {
+            const response = await fetch(`${ngrokUrl.url}/admin/setting/studentlist`, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                }, body: JSON.stringify({class_id: classId})
+            });
+
+            if (response.ok) {
+                const responseData = await response.json();
+                console.log('Students received from server:', responseData);  // Debugging log
+    
+                const students = responseData.student_list;  // Assuming the JSON has a "studentlist" key with an array
+                const stuList = document.querySelector('.student-list');
+                stuList.innerHTML = '';  // Clear any existing student list
+                students.forEach(stuItem => {
+                    const stuDiv = document.createElement('div');
+                    stuDiv.className = 'student-item';
+                    stuDiv.textContent = `${stuItem.name}`;  // Assuming each student item has a "name" property
+                    stuList.appendChild(stuDiv);
+                });
+            } else {
+                console.error('Failed to fetch student list');
+            }
+        } catch (error) {
+            console.error('Error fetching student list:', error);
+        }
     }
 
+//===========================================================
     document.querySelector('.class-stu-list').addEventListener('click', async (event) => {
         if (event.target.classList.contains('add-button')) {
             const studentNameInput = event.target.previousElementSibling;
@@ -111,20 +151,19 @@ document.addEventListener('DOMContentLoaded', async function() {
                 console.error('Student name or class not selected');
                 return;
             }
-
+//==============================학생 추가 - POST==============================
             try {
                 const response = await fetch(`${ngrokUrl.url}/admin/setting/addstudent`, {
                     method: 'POST',
                     headers: {
                         'Authorization': `Bearer ${token}`,
                         'Content-Type': 'application/json',
-                        'ngrok-skip-browser-warning': '69420'
                     },
                     body: JSON.stringify({ student_name: studentName, class_id: selectedClassId })
                 });
 
                 if (response.ok) {
-                    studentNameInput.value = ''; // clear input after successful addition
+                    studentNameInput.value = '';
                     console.log(`Student ${studentName} added to class ${selectedClassId}`);
                 } else {
                     console.error('Failed to add student');
@@ -132,6 +171,7 @@ document.addEventListener('DOMContentLoaded', async function() {
             } catch (error) {
                 console.error('Error adding student:', error);
             }
+//==============================학생 삭제 - DELETE==============================
         } else if (event.target.classList.contains('delete-button')) {
             const studentName = event.target.previousElementSibling.textContent;
 
@@ -141,7 +181,6 @@ document.addEventListener('DOMContentLoaded', async function() {
                     headers: {
                         'Authorization': `Bearer ${token}`,
                         'Content-Type': 'application/json',
-                        'ngrok-skip-browser-warning': '69420'
                     },
                     body: JSON.stringify({ student_name: studentName })
                 });
@@ -157,4 +196,6 @@ document.addEventListener('DOMContentLoaded', async function() {
             }
         }
     });
+
+
 });
