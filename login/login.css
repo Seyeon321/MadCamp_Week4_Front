@@ -1,22 +1,27 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Montserrat', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color: #f4f4f4;
+    background-color: #fffffe;
 }
 
 .login-container {
-    background: white;
+    background: #bae8e8;
     padding: 20px;
-    border-radius: 5px;
+    border-radius: 0.5vw;
+    width: 20vw;
+    height: 20vw;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    align-items: center;
+    flex-direction: column;
 }
 
 .form-group {
     margin-bottom: 15px;
+    width: 100%;
 }
 
 label {
@@ -26,22 +31,28 @@ label {
 
 input {
     width: 100%;
-    padding: 8px;
+    padding: 0.7vw;
     box-sizing: border-box;
+    border: none;
+    border-radius: 0.5vw;
+
 }
 
 button {
-    width: 100%;
-    padding: 10px;
-    background-color: #007BFF;
-    color: white;
+    width: 40%;
+    padding: 0.7vw;
+    background-color: #ffd803;
+    color: black;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin-left: 6vw;
+    margin-top: 2vw;
+    font-family: 'Montserrat', sans-serif;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #efce16;
 }
 
 #error-message {
