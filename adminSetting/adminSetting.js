@@ -1,4 +1,4 @@
-import ngrokUrl from "../ngrokUrl.js";  // Ensure the correct path and file extension are used
+import ngrokUrl from "../ngrokUrl.js";
 
 document.addEventListener('DOMContentLoaded', async function() {
     const cookieValue = document.cookie.split('; ').find(row => row.startsWith('token'));
@@ -38,10 +38,12 @@ document.addEventListener('DOMContentLoaded', async function() {
                         if (classDiv.classList.contains('selected')) {
                             classDiv.classList.remove('selected');
                             selectedClassId = null;
+                            document.querySelector('.class-info').textContent = '분반 정보';
                         } else {
                             document.querySelectorAll('.class-item').forEach(item => item.classList.remove('selected'));
                             classDiv.classList.add('selected');
                             selectedClassId = classItem;
+                            document.querySelector('.class-info').textContent = `${classItem}분반 정보`;
                         }
                     });
                     classList.appendChild(classDiv);
@@ -81,10 +83,12 @@ document.addEventListener('DOMContentLoaded', async function() {
                         if (classItem.classList.contains('selected')) {
                             classItem.classList.remove('selected');
                             selectedClassId = null;
+                            document.querySelector('.class-info').textContent = '분반 정보';
                         } else {
                             document.querySelectorAll('.class-item').forEach(item => item.classList.remove('selected'));
                             classItem.classList.add('selected');
                             selectedClassId = addClass.new_class_id;
+                            document.querySelector('.class-info').textContent = `${addClass.new_class_id}분반 정보`;
                         }
                     });
                     classList.appendChild(classItem);

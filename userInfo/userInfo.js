@@ -1,6 +1,8 @@
 import ngrokUrl from "../ngrokUrl.js";
 
 document.addEventListener('DOMContentLoaded', async function() {
+
+    console.log('DOMContentLoaded event triggered');
     const cookieValue = document.cookie.split('; ').find(row => row.startsWith('token'));
 
     if (!cookieValue) {

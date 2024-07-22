@@ -5,8 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Info</title>
     <link rel="stylesheet" href="userInfo.css">
+    <link rel="stylesheet" href="../sidebar/userSidebar.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div id="sidebar-container"></div>
+
     <div class="container">
 
         <div class="content">
@@ -49,6 +53,15 @@
 
         </div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('../sidebar/userSidebar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('sidebar-container').innerHTML = data;
+                });
+        });
+    </script>
 </body>
 </html>
 

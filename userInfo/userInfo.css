@@ -1,5 +1,5 @@
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #e3f6f5;
@@ -8,6 +8,8 @@ body {
 .container {
     display: flex;
     height: 100vh;
+    width: calc(100%-6vw);
+    margin-left: 6vw;
 }
 
 .content {

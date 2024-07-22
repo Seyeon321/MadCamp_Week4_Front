@@ -1,0 +1,52 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.sidebar {
+    top: 0;
+    width: 14vw;
+    background-color: #fff;
+    padding: 2vw;
+    position: fixed;
+    height: 100%;
+    border-right: 3px solid #000;
+}
+
+.logo {
+    font-size: 1.2em;
+    text-align: center;
+    color: #333;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    margin-bottom: 10px;
+}
+
+nav ul li button {
+    width: 100%;
+    padding: 10px;
+    background-color: #f4f4f4;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    font-size: 1em;
+    color: #333;
+    border-radius: 5px;
+}
+
+nav ul li button:hover {
+    background-color: #ddd;
+}
+
+nav ul li button:focus {
+    outline: none;
+    background-color: #ddd;
+}

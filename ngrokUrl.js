@@ -1,3 +1,3 @@
 export default {
-    url : 'https://2a4c-211-36-142-168.ngrok-free.app'
+    url : 'https://dc05-211-36-142-242.ngrok-free.app'
 }
