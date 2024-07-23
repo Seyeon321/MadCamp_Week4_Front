@@ -98,7 +98,51 @@ document.addEventListener('DOMContentLoaded', async function() {
             console.error('Error fetching order:', error);
         }
     }
+//==============================금픽 결과 보여주기==============================
+    async function showResults(){
+        if(!currentClassId || !currentWeek){
+            console.error('Class ID and Week are not set');
+            return;
+        }
 
+        try {
+            const response = await fetch(`${ngrokUrl.url}/admin/operate/calculate`, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                }, body: JSON.stringify({class_id: currentClassId, week: currentWeek})
+            });
+            const rightContainer = document.getElementById('right-container');
+            rightContainer.innerHTML = '';
+            if (response.ok) {
+                const data = await response.json();
+                const sortedTeams = data.sortedTeams;
+
+                if (sortedTeams && sortedTeams.length > 0) {
+                    rightContainer.innerHTML = `<h1>${currentWeek}주 금픽 팀</h1>`;
+                    sortedTeams.slice(0, 2).forEach(team => {
+                        const teamDiv = document.createElement('div');
+                        teamDiv.className = 'team';
+
+                        const studentList = document.createElement('ul');
+                        team.team_member_list.forEach(student => {
+                            const studentItem = document.createElement('li');
+                            studentItem.textContent = student;
+                            studentList.appendChild(studentItem);
+                        });
+                        teamDiv.appendChild(studentList);
+                        rightContainer.appendChild(teamDiv);
+                    });
+                }else rightContainer.textContent = '결과를 가져올 수 없습니다.';
+            } else {
+                console.error('Failed to fetch results');
+            }
+        } catch (error) {
+            console.error('Error fetching results', error);
+        }
+    }
+//============================================================
     document.getElementById('set-order-button').addEventListener('click', function() {
         const classId = document.getElementById('class-id-input').value;
         const week = document.getElementById('week-input').value;
@@ -107,5 +151,9 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     document.getElementById('start-review-button').addEventListener('click', function() {
         startReview();
+    });
+
+    document.getElementById('show-results-button').addEventListener('click', function() {
+        showResults();
     });
 });
