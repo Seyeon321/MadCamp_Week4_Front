@@ -25,7 +25,6 @@ document.addEventListener('DOMContentLoaded', async function() {
 
             if (response.ok) {
                 const responseData = await response.json();
-                console.log('Classes received from server:', responseData);  // Debugging log
 
                 const classes = responseData.class_id_list;  // Assuming the JSON has a "classes" key with an array
                 const classList = document.querySelector('.class-list');
@@ -62,7 +61,6 @@ document.addEventListener('DOMContentLoaded', async function() {
     const selectedClassId_mod =  selectedClassId;
     if (plusButton) {
         plusButton.addEventListener('click', async () => {
-            console.log('Plus button clicked');  // Debugging log
             try {
                 const response = await fetch(`${ngrokUrl.url}/admin/setting/addclass`, {
                     method: 'POST',
@@ -123,14 +121,11 @@ document.addEventListener('DOMContentLoaded', async function() {
 
             if (response.ok) {
                 const responseData = await response.json();
-                console.log('Students received from server:', responseData);  // Debugging log
     
                 const students = responseData.student_list;  // Assuming the JSON has a "studentlist" key with an array
                 const stuList = document.querySelector('.student-list');
                 stuList.innerHTML = '';  // Clear any existing student list
                 students.forEach(stuItem => {
-
-                    console.log('Student Item:', stuItem);
 
                     const stuDiv = document.createElement('div');
                     stuDiv.className = 'student-item';
@@ -140,7 +135,6 @@ document.addEventListener('DOMContentLoaded', async function() {
                     deleteButton.className = 'action-button delete-button';
                     deleteButton.textContent = 'Delete';
                     deleteButton.addEventListener('click', async () => {
-                        console.log('Student ID to be deleted:', stuItem.student_id);
                         await deleteStudent(stuItem.student_id, token, stuDiv);
                     });
                     stuList.appendChild(stuDiv);
@@ -178,9 +172,6 @@ document.addEventListener('DOMContentLoaded', async function() {
 //==============================학생 삭제 - PUT==============================
     async function deleteStudent(studentId, token, studentElement){
         try {
-
-            console.log('Deleting student with ID:', studentId);
-
             const response = await fetch(`${ngrokUrl.url}/admin/setting/dropstudent`, {
                 method: 'PUT',
                 headers: {
