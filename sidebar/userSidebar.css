@@ -6,6 +6,8 @@ body {
 }
 
 .sidebar {
+    top: 0;
+    left: 0;
     width: 14vw;
     background-color: #fff;
     padding: 2vw;
