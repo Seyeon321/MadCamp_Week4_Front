@@ -25,7 +25,6 @@ document.addEventListener('DOMContentLoaded', async function() {
 
             if (response.ok) {
                 const responseData = await response.json();
-                console.log('Classes received from server:', responseData);  // Debugging log
 
                 const classes = responseData.class_id_list;  // Assuming the JSON has a "classes" key with an array
                 const classList = document.querySelector('.class-list');
@@ -62,7 +61,6 @@ document.addEventListener('DOMContentLoaded', async function() {
     const selectedClassId_mod =  selectedClassId;
     if (plusButton) {
         plusButton.addEventListener('click', async () => {
-            console.log('Plus button clicked');  // Debugging log
             try {
                 const response = await fetch(`${ngrokUrl.url}/admin/setting/addclass`, {
                     method: 'POST',
@@ -123,16 +121,24 @@ document.addEventListener('DOMContentLoaded', async function() {
 
             if (response.ok) {
                 const responseData = await response.json();
-                console.log('Students received from server:', responseData);  // Debugging log
     
                 const students = responseData.student_list;  // Assuming the JSON has a "studentlist" key with an array
                 const stuList = document.querySelector('.student-list');
                 stuList.innerHTML = '';  // Clear any existing student list
                 students.forEach(stuItem => {
+
                     const stuDiv = document.createElement('div');
                     stuDiv.className = 'student-item';
                     stuDiv.textContent = `${stuItem.name}`;  // Assuming each student item has a "name" property
+
+                    const deleteButton = document.createElement('button');
+                    deleteButton.className = 'action-button delete-button';
+                    deleteButton.textContent = 'Delete';
+                    deleteButton.addEventListener('click', async () => {
+                        await deleteStudent(stuItem.student_id, token, stuDiv);
+                    });
                     stuList.appendChild(stuDiv);
+                    stuDiv.appendChild(deleteButton);
                 });
             } else {
                 console.error('Failed to fetch student list');
@@ -141,61 +147,68 @@ document.addEventListener('DOMContentLoaded', async function() {
             console.error('Error fetching student list:', error);
         }
     }
-
-//===========================================================
-    document.querySelector('.class-stu-list').addEventListener('click', async (event) => {
-        if (event.target.classList.contains('add-button')) {
-            const studentNameInput = event.target.previousElementSibling;
-            const studentName = studentNameInput.value;
-            if (!studentName || !selectedClassId) {
-                console.error('Student name or class not selected');
-                return;
-            }
 //==============================학생 추가 - POST==============================
-            try {
-                const response = await fetch(`${ngrokUrl.url}/admin/setting/addstudent`, {
-                    method: 'POST',
-                    headers: {
-                        'Authorization': `Bearer ${token}`,
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ student_name: studentName, class_id: selectedClassId })
-                });
+    async function addStudent(studentName, classId, token) {
+        try {
+            const response = await fetch(`${ngrokUrl.url}/admin/setting/addstudent`, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ student_name: studentName, class_id: classId })
+            });
 
-                if (response.ok) {
-                    studentNameInput.value = '';
-                    console.log(`Student ${studentName} added to class ${selectedClassId}`);
-                } else {
-                    console.error('Failed to add student');
-                }
-            } catch (error) {
-                console.error('Error adding student:', error);
+            if (response.ok) {
+                console.log(`Student ${studentName} added to class ${selectedClassId}`);
+                await loadStudents(classId, token); // reload after adding
+            } else {
+                console.error('Failed to add student');
             }
-//==============================학생 삭제 - DELETE==============================
-        } else if (event.target.classList.contains('delete-button')) {
-            const studentName = event.target.previousElementSibling.textContent;
-
-            try {
-                const response = await fetch(`${ngrokUrl.url}/admin/setting/deletestudent`, {
-                    method: 'DELETE',
-                    headers: {
-                        'Authorization': `Bearer ${token}`,
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ student_name: studentName })
-                });
-
-                if (response.ok) {
-                    event.target.parentElement.remove(); // remove element from DOM
-                    console.log(`Student ${studentName} deleted`);
-                } else {
-                    console.error('Failed to delete student');
-                }
-            } catch (error) {
-                console.error('Error deleting student:', error);
-            }
+        } catch (error) {
+            console.error('Error adding student:', error);
         }
+    }
+//==============================학생 삭제 - PUT==============================
+    async function deleteStudent(studentId, token, studentElement){
+        try {
+            const response = await fetch(`${ngrokUrl.url}/admin/setting/dropstudent`, {
+                method: 'PUT',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ student_id: studentId})
+            });
+
+            if (response.ok) {
+                studentElement.remove();
+                console.log(`Student with ID ${studentId} deleted`);
+            } else {
+                let errorMessage;
+
+                try {
+                    const errorData = await response.json();
+                    errorMessage = errorData.message || JSON.stringify(errorData);
+                } catch (e) {
+                   errorMessage = await response.text();
+                }
+                console.error('Failed to delete student:', errorMessage);
+            }
+        } catch (error) {
+            console.error('Error deleting student:', error);
+        }
+    }
+
+    document.getElementById('add-students-button').addEventListener('click', async (event) => {
+        const studentNameInput = document.querySelector('.student-input');
+        const studentName = studentNameInput.value;
+        if (!studentName || !selectedClassId) {
+            console.error('Student name or class not selected');
+            return;
+        }
+
+        await addStudent(studentName, selectedClassId, token);
+        studentNameInput.value = '';
     });
-
-
 });
