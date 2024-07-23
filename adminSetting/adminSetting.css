@@ -125,10 +125,12 @@ body {
 
 .add-button {
     color: green;
+    margin-left: 1vw;
 }
 
 .delete-button {
     color: red;
+    margin-left: 1vw;
 }
 
 .student-list {
