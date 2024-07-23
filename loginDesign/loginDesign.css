@@ -1,0 +1,117 @@
+body {background-color: #c4c5c6    ;}
+.file-background2 {
+    position: absolute;
+    top: 25vh;
+    left: 25vw;
+    background-color: #fff;
+    width: 50vw;
+    height: 50vh;
+}
+.right-line {
+    position: absolute;
+    top: 28vh;
+    left: 74vw;
+    border-right: 0.33vw solid #000;
+    box-sizing: border-box;
+    width: 0.2vw;
+    height: 44vh;
+}
+.left-line {
+    position: absolute;
+    top: 28vh;
+    left: 26vw;
+    border-right: 0.33vw solid #000;
+    box-sizing: border-box;
+    width: 0.2vw;
+    height: 44vh;
+}
+.bottom-line {
+    position: absolute;
+    top: 73vh;
+    left: 27vw;
+    border-top: 0.33vw solid #000;
+    box-sizing: border-box;
+    width: 46vw;
+    height: 0.2vw;
+}
+.top-line {
+    position: absolute;
+    top: 27vh;
+    left: 27vw;
+    border-top: 0.33vw solid #000;
+    box-sizing: border-box;
+    width: 46vw;
+    height: 0.2vw;
+}
+.login {
+    position: absolute;
+    top: 28vh;
+    left: 29vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.i {
+    letter-spacing: 0.1em;
+}
+.id {
+    position: absolute;
+    top: 52vh;
+    right: 59vw;
+    font-size: 5.33vh;
+    display: inline-block;
+}
+.pw {
+    position: absolute;
+    top: 61vh;
+    right: 59vw;
+    font-size: 5vh;
+    display: inline-block;
+}
+input[type="text"], input[type="password"] {
+    position: absolute;
+    right: 37vw;
+    width: 20vw;
+    height: 6vh;
+    font-size: 2vw;
+    padding: 0.5vw;
+    border: 1px solid #c4c5c6;
+    background-color: #c4c5c6;
+    box-sizing: border-box;
+}
+#login_id {
+    top: 53vh;
+}
+#password {
+    top: 62vh;
+}
+.background {
+    width: 100%;
+    position: relative;
+    height: 100vh;
+    text-align: center;
+    font-size: 10.67vh;
+    color: #000;
+    font-family: 'Kumar One';
+}
+button[type="submit"] {
+    position: absolute;
+    top: 52.5vh;
+    right: 26vw;
+    width: 9vw;
+    height: 16vh;
+    font-size: 2vw;
+    background-color: #444;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+button[type="submit"]:hover {
+    background-color: #000;
+}
+
+
+
+
