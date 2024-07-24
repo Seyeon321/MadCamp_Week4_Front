@@ -4,7 +4,8 @@
 }
 
 body {
-    font-family: "Do Hyeon";
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 400;
 }
 
 .navbar {
@@ -47,8 +48,8 @@ body {
 
 .nav-list li a {
     text-decoration: none;
-    color: #7e7e7e;
-    font-size: 2em;
+    color: #000;
+    font-size: 1.5em;
     transition: color 0.3s ease-in-out;
 }
 
@@ -59,17 +60,21 @@ body {
 
 .nav-item.member-info {
     background-image: url('tab_red.svg');
+    z-index: 4;
 }
-.nav-item.about {
+.nav-item.team {
     background-image: url('tab_yellow.svg');
+    z-index: 3;
 }
 
 .nav-item.services {
     background-image: url('tab_red.svg');
+    z-index: 2;
 }
 
 .nav-item.contact {
     background-image: url('tab_yellow.svg');
+    z-index: 1;
 }
 .nav-list .active {
     z-index: 10; /* Higher z-index for the active item */

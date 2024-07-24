@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Team</title>
     <link rel="stylesheet" href="userTeam.css">
-    <link rel="stylesheet" href="../sidebar/userSidebar.css">
+    <link rel="stylesheet" href="../sidebarDesign/userNavigationbar.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -60,10 +60,13 @@
     <script src="userTeam.js" type="module"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            fetch('../sidebar/userSidebar.html')
+            fetch('../sidebarDesign/userNavigationbar.html')
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById('sidebar-container').innerHTML = data;
+                    const script = document.createElement('script');
+                    script.src = '../sidebarDesign/userNavigationbar.js';
+                    document.body.appendChild(script);
                 });
         });
     </script>
