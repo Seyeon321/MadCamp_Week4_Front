@@ -41,24 +41,32 @@ body {
 .leftbox {
     height: 100%;
     width: 40%;
-    background-color: red;
 }
 .rightbox {
     height: 100%;
     width: 60%;
-    background-color: yellow;
+    display: flex;
+    flex-direction: column;
 }
 
 .create-team-container,
 .join-team-container {
-    background-color: white;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding-left: 3vw;
+    padding-top: 4vh;
+    padding-bottom: 3vh;
+}
+.black-line {
+    position: absolute;
+    top: 60vh;
+    left: 41.5vw;
+    border-top: 5px solid #000;
+    box-sizing: border-box;
+    width: 50.7vw;
+    height: 0.2vw;
 }
 
 .form-group {
-    margin-bottom: 1rem;
+    margin-bottom: 1vh;
 }
 
 h2 {
@@ -72,19 +80,27 @@ label {
 }
 
 input[type="text"] {
-    width: 50%;
-    padding: 0.5rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+    width: 45vw;
+    height: 5.5vh;
+    font-size: 1vw;
+    text-align: center;
+    padding: 0.5vw;
+    border: 1px solid #ffffff;
+    background-color: #fff;
+    box-sizing: border-box;
 }
 
 input[type="text"]:focus {
-    border-color: #007BFF;
+    background-color: #fff;
+    outline: none;
+}
+input::placeholder{
+    color: #7b7b7b;
 }
 
 button {
     display: block;
-    width: 100%;
+    width: 20%;
     padding: 0.75rem;
     background-color: #007BFF;
     color: white;
@@ -103,8 +119,9 @@ button:hover {
     border-radius: 4px;
     margin-top: 0.5rem;
     background-color: white;
+    text-align: center;
     position: absolute;
-    width: calc(100% - 2rem);
+    width: 45vw;
 }
 
 .option {
@@ -135,10 +152,35 @@ button:hover {
     background-color: #f5f5f5;
 }
 
-.team-list-container {
-    margin-top: 2rem;
-    background-color: white;
+.title {
+    padding-top: 3vh;
+    padding-left: 3vw;
+    font-size: 2.5vw;
+    font-weight: bold;
+    margin-bottom: 4vh;
+}
+.warning {
+    font-size: 1vw;
+    color: red;
+}
+.wrap_title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 3vw;
+    font-size: 2.5vw;
+    font-weight: bold;
+    margin-bottom: 4vh;
+}
+
+.team-list-container .team-item{
     width: 100%;
+    height: 8vh;
+    padding-left: 3vw;
+    margin-bottom: 2vh;
+    display: flex;
+    align-items: center;
+    justify-content: left;
 }
 
 .teammate {
@@ -146,4 +188,14 @@ button:hover {
     border-bottom: 1px solid #ddd;
 }
 
+strong {
+    font-size: 2vw;
+    vertical-align: middle;
+}
+
+span {
+    margin-left: 3vw;
+    font-size: 2vw;
+    vertical-align: middle;
+}
 

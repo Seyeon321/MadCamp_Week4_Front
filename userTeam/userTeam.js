@@ -51,8 +51,16 @@ document.addEventListener('DOMContentLoaded', async function() {
                 },
                 body: JSON.stringify({week, code, teammate_num: teammateNum})
             });
-            if(response.ok) console.log('Sent Team Info:', response);
-            else console.error('Failed to fetch class info');
+            if(response.ok) {
+                document.getElementById("maketeam_warning").textContent = "팀 만들기 성공"
+                document.getElementById("maketeam_warning").style.color = 'black'
+
+            }
+            else {
+                document.getElementById("maketeam_warning").textContent = await response.text();
+                document.getElementById("maketeam_warning").style.color = 'red';
+                console.log("status code:", await response.text())
+            }
         } catch (error){
             console.error('Error fetching user info', error);
         }
@@ -71,33 +79,22 @@ document.addEventListener('DOMContentLoaded', async function() {
                 },
                 body: JSON.stringify({code})
             });
-            if(response.ok) console.log('Sent Code:', response);
-            else console.error('Failed to fetch code');
+            if(response.ok){
+                document.getElementById("jointeam_warning").textContent = "팀 참여 성공"
+                document.getElementById("jointeam_warning").style.color = 'black'
+
+            }
+            else {
+                document.getElementById("jointeam_warning").textContent = await response.text();
+                document.getElementById("jointeam_warning").style.color = 'red';
+                console.log("status code:", await response.text())
+            }
         } catch (error){
             console.error('Error fetching code info', error);
         }
     });
 // ==============================view my team - GET==============================
-    const weekInput = document.getElementById('week2');
-    const weekOp = document.getElementById('week-options');
 
-    weekInput.addEventListener('focus', () => {
-        weekOp.style.display = 'block';
-    });
-
-    document.addEventListener('click', (event) => {
-        if(!weekInput.contains(event.target) && !weekOp.contains(event.target)){
-            weekOp.style.display = 'none';
-        }
-    });
-
-    document.querySelectorAll('.week-option').forEach(option => {
-        option.addEventListener('click', (event) => {
-            const value = event.target.getAttribute('data-value');
-            weekInput.value = value;
-            weekOp.style.display = 'none';
-        });
-    });
 
     async function loadTeamInfo(week2) {
         try {
@@ -111,35 +108,32 @@ document.addEventListener('DOMContentLoaded', async function() {
 
             if(response.ok) {
                 const data = await response.json();
-                const teamListContainer = document.querySelector('.team-list-container');
-                teamListContainer.innerHTML = ''
+                var returnStr = ""
 
                 if (Array.isArray(data.teammates) && data.teammates.length > 0) {
                     data.teammates.forEach(teammate => {
-
-                        const teammateElement = document.createElement('div');
-                        teammateElement.className = 'teammate';
-
-                        teammateElement.textContent = `Name: ${teammate}`;
-                        teamListContainer.appendChild(teammateElement);
-
+                    returnStr += teammate
                     });
                 } else {
-                    const noTeammatesElement = document.createElement('div');
-                    noTeammatesElement.className = 'no-teammates';
-                    noTeammatesElement.textContent = 'No teammates found for the selected week.';
-                    teamListContainer.appendChild(noTeammatesElement);
+                    returnStr = "아직 팀원이 없습니다"
                 }
+                document.getElementById(`teammate ${week2}`).textContent = returnStr
             } else console.error('Failed to fetch team info');
         } catch (error) {
             console.error('Error fetching team info', error);
         }
     }
 
-    document.getElementById('button3').addEventListener('click', () => {
-        const selectedWeek = weekInput.value;
-        if(selectedWeek) loadTeamInfo(selectedWeek);
-        else console.error('Please select a week');
-    });
+
+
+    async function updateTeammates() {
+        for (let i = 1; i < 5; i++) {
+            const teammate = await loadTeamInfo(i);
+        }
+    }
+    
+    // Call the function with the selected week
+    updateTeammates();
+    
 
 });
