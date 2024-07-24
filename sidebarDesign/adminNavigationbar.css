@@ -11,7 +11,7 @@ body {
     top: 0;
     left: 0;
     width: 100vw;
-    height: 20vh;
+    height: 15vh;
 
 }
 
@@ -22,8 +22,8 @@ body {
     justify-content: space-between;
     background-blend-mode: darken;
     background-size: cover;
-    padding-top:15vh;
-    padding-left: 10vw;
+    padding-top:10vh;
+    padding-left: 5vw;
     z-index: 1;
 }
 
@@ -38,8 +38,8 @@ body {
     height: 10vh;
     background-repeat: no-repeat;
     background-position: center;
-    margin-left: -1vw;
-    margin-right: -1vw;
+    margin-left: -0.6vw;
+    margin-right: -0.6vw;
     z-index: 1;
     text-align: center;
 }

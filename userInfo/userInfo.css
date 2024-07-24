@@ -14,8 +14,8 @@ body {
 .content {
     flex: 1;
     padding: 3vw;
-    margin-left: 10vw;
-    margin-right: 10vw;
+    margin-left: 5vw;
+    margin-right: 5vw;
     background-color: #46b8b2;
 }
 
