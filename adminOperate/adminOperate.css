@@ -1,0 +1,42 @@
+.admin-operating {
+    display: flex;
+    margin-left: 20vw;
+}
+
+.left-container {
+    width: 50%;
+    padding: 20px;
+}
+
+.right-container {
+    width: 50%;
+    padding: 20px;
+}
+
+h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+input {
+    display: block;
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 16px;
+    width: calc(100% - 22px); /* padding 포함 */
+    box-sizing: border-box;
+}
+
+button {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+#order-list-container {
+    margin-top: 20px;
+}

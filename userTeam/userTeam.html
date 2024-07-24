@@ -5,9 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Team</title>
     <link rel="stylesheet" href="userTeam.css">
+    <link rel="stylesheet" href="../sidebar/userSidebar.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div id="sidebar-container"></div>
+
     <div class="left-container">
         <div class="create-team-container">
             <h2>Create Team</h2>
@@ -55,5 +58,14 @@
         </div>
     </div>
     <script src="userTeam.js" type="module"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('../sidebar/userSidebar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('sidebar-container').innerHTML = data;
+                });
+        });
+    </script>
 </body>
 </html>
