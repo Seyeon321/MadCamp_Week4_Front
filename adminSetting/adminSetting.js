@@ -32,7 +32,11 @@ document.addEventListener('DOMContentLoaded', async function() {
                 classes.forEach(classItem => {
                     const classDiv = document.createElement('div');
                     classDiv.className = 'class-item';
-                    classDiv.textContent = `${classItem}분반`;
+                    
+                    const span = document.createElement('span');
+                    span.textContent = `${classItem}분반`
+                    classDiv.appendChild(span);
+
                     classDiv.addEventListener('click', () => {
                         if (classDiv.classList.contains('selected')) {
                             classDiv.classList.remove('selected');
@@ -126,19 +130,30 @@ document.addEventListener('DOMContentLoaded', async function() {
                 const stuList = document.querySelector('.student-list');
                 stuList.innerHTML = '';  // Clear any existing student list
                 students.forEach(stuItem => {
-
                     const stuDiv = document.createElement('div');
                     stuDiv.className = 'student-item';
-                    stuDiv.textContent = `${stuItem.name}`;  // Assuming each student item has a "name" property
-
+                
+                    const nameSpan = document.createElement('span');
+                    nameSpan.className = 'student-name';
+                    nameSpan.textContent = stuItem.name;
+                
                     const deleteButton = document.createElement('button');
                     deleteButton.className = 'action-button delete-button';
-                    deleteButton.textContent = 'Delete';
+                
+                    const deleteSpan = document.createElement('span');
+                    deleteSpan.textContent = 'X';
+                
+                    deleteButton.appendChild(deleteSpan);
+                    
+                    stuDiv.appendChild(nameSpan);
+                    stuDiv.appendChild(deleteButton);
+                    
                     deleteButton.addEventListener('click', async () => {
+                        event.stopPropagation();
                         await deleteStudent(stuItem.student_id, token, stuDiv);
                     });
+                    
                     stuList.appendChild(stuDiv);
-                    stuDiv.appendChild(deleteButton);
                 });
             } else {
                 console.error('Failed to fetch student list');
@@ -170,35 +185,41 @@ document.addEventListener('DOMContentLoaded', async function() {
         }
     }
 //==============================학생 삭제 - PUT==============================
-    async function deleteStudent(studentId, token, studentElement){
-        try {
-            const response = await fetch(`${ngrokUrl.url}/admin/setting/dropstudent`, {
-                method: 'PUT',
-                headers: {
-                    'Authorization': `Bearer ${token}`,
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ student_id: studentId})
-            });
+async function deleteStudent(studentId, token, studentElement) {
+    try {
+        studentElement.classList.add('deleting');
+        
+        await new Promise(resolve => setTimeout(resolve, 300)); // 애니메이션을 위한 지연
 
-            if (response.ok) {
-                studentElement.remove();
-                console.log(`Student with ID ${studentId} deleted`);
-            } else {
-                let errorMessage;
+        const response = await fetch(`${ngrokUrl.url}/admin/setting/dropstudent`, {
+            method: 'PUT',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ student_id: studentId })
+        });
 
-                try {
-                    const errorData = await response.json();
-                    errorMessage = errorData.message || JSON.stringify(errorData);
-                } catch (e) {
-                   errorMessage = await response.text();
-                }
-                console.error('Failed to delete student:', errorMessage);
+        if (response.ok) {
+            await new Promise(resolve => setTimeout(resolve, 300)); // 완전히 빨간색이 된 후 지연
+            studentElement.remove();
+            console.log(`Student with ID ${studentId} deleted`);
+        } else {
+            studentElement.classList.remove('deleting'); // 실패 시 애니메이션 제거
+            let errorMessage;
+            try {
+                const errorData = await response.json();
+                errorMessage = errorData.message || JSON.stringify(errorData);
+            } catch (e) {
+                errorMessage = await response.text();
             }
-        } catch (error) {
-            console.error('Error deleting student:', error);
+            console.error('Failed to delete student:', errorMessage);
         }
+    } catch (error) {
+        studentElement.classList.remove('deleting'); // 에러 시 애니메이션 제거
+        console.error('Error deleting student:', error);
     }
+}
 
     document.getElementById('add-students-button').addEventListener('click', async (event) => {
         const studentNameInput = document.querySelector('.student-input');

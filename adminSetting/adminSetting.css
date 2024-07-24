@@ -1,99 +1,80 @@
 body {
     font-family: 'Montserrat', sans-serif;
+    background-color: #c4c5c6;
     margin: 0;
     padding: 0;
-    background-color: #c4c5c6;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* height: 100vh; */
+}
+
+.sidebar-container {
+    width: 100%;
 }
 
 .container {
-    margin-top: 15vh; /* after NavigationBar import, delete this code*/
-    height: 80vh;
     width: 100vw;
+    height: 80vh;
     display: flex;
 }
 
-.left-container  {
-    width: 50%;
-    height: 80vh;
+.content {
+    flex: 1;
     margin-left: 5vw;
-    /* padding: 3vw; */
-    display: flex;
-    flex-direction: column;
-    background-color: #fff1ce;
-}
-
-.left-smaller-container  {
-    border: 0.3vw solid black;
-    height: 70vh;
-    width: 42.5vw;
-    margin-top: 5vh;
-    margin-left: 2.4vw;
-    position: absolute;
-}
-
-.right-smaller-container  {
-    border: 0.3vw solid black;
-    height: 70vh;
-    width: 42.5vw;
-    margin-top: 5vh;
-    margin-right: 2.4vw;
-    position: absolute;
-}
-
-.box1, .box2, .box3, .box4 {
-    background-color: #fff1ce;
-    width: 3vw;
-    height: 3vw;
-    z-index: 100;
-    position: absolute; /* Position them absolutely within the container */
-}
-
-.box1 {
-    top: -0.5vw; /* Adjusting to make sure it appears inside the border */
-    left: -0.5vw; /* Adjusting to make sure it appears inside the border */
-}
-
-.box2 {
-    top: -0.5vw; /* Adjusting to make sure it appears inside the border */
-    right: -0.5vw; /* Adjusting to make sure it appears inside the border */
-}
-
-.box3 {
-    bottom: -0.5vw; /* Adjusting to make sure it appears inside the border */
-    left: -0.5vw; /* Adjusting to make sure it appears inside the border */
-}
-
-.box4 {
-    bottom: -0.5vw; /* Adjusting to make sure it appears inside the border */
-    right: -0.5vw; /* Adjusting to make sure it appears inside the border */
-}
-
-
-.right-container {
-    width: 50%;
-    height: 80vh;
     margin-right: 5vw;
+    background-color: #fff1ce;
+    z-index: 20;
+}
+
+.innerbox {
+    margin-top: 5vh;
+    height: 70vh;
+    margin-left: 2.5vw;
+    width: 85vw;
+    margin-bottom: -70vh;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+}
+
+.lines {
+    position: absolute;
+    top: 20vh;
+    left: 7.5vw;
+    height: 70vh;
+    width: 85vw;
+    background: url('./border\(4-6\).svg') no-repeat center center;
+    background-size: cover;
+    z-index: 15;
+    pointer-events: none;
+}
+
+.left-container {
+    width: 40%;
+    height: 100%;
     background-color: #fff1ce;
 }
 
-.bottoml-container {
-    background-color: white;
-}
-
-.bottomr-container {
-    background-color: white;
-}
-
-.title-section1, .title-section2 {
-    padding: 3vw;
-    width: 100%;
+.right-container  {
+    width: 60%;
+    height: 100%;
+    background-color: #fff1ce;
     display: flex;
+    flex-direction: column;
+}
+
+.title-section1 {
+    margin-top: 3vw;
+    margin-left: 3vw;
+    width: 100%;
+    height: 10vh;
+    display: flex;
+}
+
+.title-section2 {
+    margin-top: 3vw;
+    padding-left: 3.5vw;
+    width: calc(100%-3.5vw);
+    height: 10vh;
+    display: flex;
+
+    border-bottom: 0.4vw solid black;
 }
 
 .create-new-class, .class-info {
@@ -110,7 +91,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 0.7vw;
+    border-radius: 0.5vw;
 }
 
 .create-new-class1:hover {
@@ -127,39 +108,62 @@ body {
 .class-list {
     display: flex;
     flex-direction: column;
-    gap: 1vw;
-    width: 100%;
+    align-items: center;
 }
 
 .class-item {
-    background-color: #fffffe;
+    background-color: #fff1ce;
     width: 100%;
-    height: 4vw;
+    height: 5.5vw;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.5vw;
-    border-radius: 0.5vw;
+    font-size: 2.5vw;
     cursor: pointer;
+    transition: color 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.class-item::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: #fffffe;
+    transition: left 0.3s ease;
+    z-index: 1;
+    
+}
+
+.class-item:hover::after {
+    left: 0;
+}
+
+.class-item span {
+    position: relative;
+    z-index: 2;
 }
 
 .class-item.selected {
-    background-color: #ffd803;  /* Change background color to indicate selection */
-    border: 2px solid #000;  /* Add border to indicate selection */
+    background-color: #fffffe;
 }
 
 .class-stu-list {
     background-color: #fffffe;
-    width: 70%;
-    padding: 1vw;
-    border-radius: 0.8vw;
+    width: 100%;
+    flex-grow: 1;
+    flex: 1;
+    overflow-y: auto;
+    max-height: calc(100%-10vh);
 }
 
 .student-info {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    margin-bottom: 1vw;
+    justify-content: space-between;
     width: 100%;
 }
 
@@ -169,8 +173,12 @@ body {
 
 .student-input {
     font-size: 1.5vw;
-    padding: 0.7vw;
-    width: 70%;
+    padding: 1vw;
+    width: 100%;
+    height: 5vh;
+    flex: 1;
+    border-bottom: 0.4vw solid black;
+    background-color: white;
 }
 
 .load-button-container {
@@ -185,14 +193,28 @@ body {
     border-radius: 0.7vw;
 }
 
-.action-button {
+.load-button-container2 {
     background-color: transparent;
     border: 0.3vw solid black;
-    border: none;
-    border-radius: 0.5vw;
-    padding: 0.5vw 1vw;
+    height: 2.5vw;
+    width: 2.5vw;
+    margin-left: 20vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.7vw;
+}
+
+.load-button-container2:hover {
+    transform: scale(1.2);
+}
+
+.action-button {
+    background-color: transparent;
+    padding: 0.3vh 0.3vw;
     font-size: 1vw;
     cursor: pointer;
+    border: transparent;
 }
 
 .load-button-container:hover {
@@ -200,31 +222,76 @@ body {
 }
 
 .add-button {
-    color: green;
-    margin-left: 1vw;
+    color: black;
+    font-size: 2.5vw;
+    font-weight: bold;
 }
 
 .delete-button {
     color: red;
-    margin-left: 1vw;
+    font-size: 1.5vw;
+    font-weight: bold;
+    margin-right: 1vw;
+    position: relative;
+    z-index: 2;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    padding: 0.5vw 1vw;
+}
+
+.delete-button span {
+    position: relative;
+    z-index: 1;
 }
 
 .student-list {
     display: flex;
     flex-direction: column;
-    gap: 1vw;
     width: 100%;
+    overflow-y: auto;
 }
 
 .student-item {
-    background-color: #f0f0f0;
-    padding: 0.5vw;
-    border-radius: 0.5vw;
+    background-color: #fffffe;
+    padding: 1vw;
+    border-bottom: 0.3vw solid black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: background-color 0.5s ease;
 }
 
 .student-item:hover {
-    background-color: #dcdcdc;
+    background-color: #fff1ce;
+}
+
+.student-item::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 0, 0, 0.7);
+    transition: right 0.5s ease;
+    z-index: 0;
+}
+
+.student-item.deleting::after {
+    right: 0;
+}
+
+.student-item.deleting {
+    background-color: rgba(255, 0, 0, 0.7);
+}
+
+.student-name {
+    position: relative;
+    z-index: 1;
 }
 
 .no-teammates {
