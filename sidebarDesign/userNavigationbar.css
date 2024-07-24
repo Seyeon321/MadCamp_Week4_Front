@@ -1,0 +1,76 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Do Hyeon";
+}
+
+.navbar {
+    display: flex;
+    position: sticky;
+    align-items: center;
+    justify-content: space-between;
+    top: 0px;
+    background-blend-mode: darken;
+    background-size: cover;
+    padding: 15vh 15vw;
+    z-index: 1;
+}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+    margin-left: -3vw;
+    margin-right: -3vw;
+}
+
+.nav-list li {
+    background-size: 25vw, 14vh; /* Set relative size of the background image */
+    width: 21vw; /* Set a fixed width */
+    height: 14vh;
+    padding: 1vw;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-left: -3vw;
+    margin-right: -3vw;
+    z-index: 1;
+    text-align: center;
+}
+.nav-list li:first-child {
+    margin-left: 0;
+}
+.nav-list li:last-child {
+    margin-right: 0;
+}
+
+.nav-list li a {
+    text-decoration: none;
+    color: #7e7e7e;
+    font-size: 2em;
+    transition: color 0.3s ease-in-out;
+}
+
+.nav-list li a:hover {
+    color: #ffd700;
+    /* Change the color on hover */
+}
+
+.nav-item.member-info {
+    background-image: url('tab_red.svg');
+}
+.nav-item.about {
+    background-image: url('tab_yellow.svg');
+}
+
+.nav-item.services {
+    background-image: url('tab_red.svg');
+}
+
+.nav-item.contact {
+    background-image: url('tab_yellow.svg');
+}
+.nav-list .active {
+    z-index: 10; /* Higher z-index for the active item */
+}

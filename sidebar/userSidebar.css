@@ -7,8 +7,7 @@ body {
 
 .sidebar {
     width: 14vw;
-    background-color: #fff;
-    padding: 2vw;
+    background-color: #c4c5c6;
     position: fixed;
     height: 100%;
     border-right: 3px solid #000;
@@ -26,19 +25,20 @@ nav ul {
 }
 
 nav ul li {
-    margin-bottom: 10px;
+    margin-bottom: 3vh;
 }
 
 nav ul li button {
-    width: 100%;
-    padding: 10px;
-    background-color: #f4f4f4;
+    width: 14vw;
+    padding: 2vh;
+    background-color: #c4c5c6;
     border: none;
     text-align: left;
     cursor: pointer;
-    font-size: 1em;
-    color: #333;
-    border-radius: 5px;
+    font-family: "Do Hyeon";
+    text-align: center;
+    font-size: 3em;
+    color: #000;
 }
 
 nav ul li button:hover {
@@ -48,4 +48,14 @@ nav ul li button:hover {
 nav ul li button:focus {
     outline: none;
     background-color: #ddd;
+}
+.background {
+    width: 100%;
+    position: relative;
+    height: 100vh;
+    text-align: center;
+    font-size: 10.67vh;
+    color: #000;
+    font-family: "Do Hyeon";
+    letter-spacing: 0.03em;
 }
