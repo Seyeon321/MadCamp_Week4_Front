@@ -289,9 +289,29 @@ body {
     background-color: rgba(255, 0, 0, 0.7);
 }
 
-.student-name {
-    position: relative;
+.student-info {
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-between;
+    align-items: center;
     z-index: 1;
+}
+
+.student-name, .student-login, .student-password {
+    font-size: 1.2vw;
+    margin-right: 1vw;
+}
+
+.student-name {
+    width: 30%;
+}
+
+.student-login {
+    width: 35%;
+}
+
+.student-password {
+    width: 25%;
 }
 
 .no-teammates {
