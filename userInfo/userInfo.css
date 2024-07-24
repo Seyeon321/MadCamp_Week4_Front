@@ -13,11 +13,33 @@ body {
 
 .content {
     flex: 1;
-    padding: 3vw;
     margin-left: 5vw;
     margin-right: 5vw;
     background-color: #d6e7f7;
     z-index:20;
+}
+.innerbox {
+    margin-top: 5vh;
+    height: 70vh;
+    margin-left: 2.5vw;
+    width: 85vw;
+    margin-bottom: -70vh;
+}
+.lines {
+    position: absolute;
+    top: 20vh;
+    left: 7.5vw;
+    height: 70vh;
+    width: 85vw;
+    background: url('./5514box.svg') no-repeat center center;
+    background-size: cover;
+    z-index: 15;
+    pointer-events: none;
+}
+.rightbox {
+    height: 100%;
+    width: 50%;
+    background-color: white;
 }
 
 .title {

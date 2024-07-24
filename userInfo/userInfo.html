@@ -12,47 +12,47 @@
     <div id="sidebar-container"></div>
 
     <div class="container">
-
         <div class="content">
-            
-            <div class="title">My Information</div>
-
-            
-            <div class="account-info">
-                <b class="card-title">Account Info</b>
-                <div class="account-details">
-                    <p><strong>Username:</strong> <span id="username"></span></p>
-                    <p>
-                        <strong>Login ID:</strong> <span id="login_id"></span>
-                        <button id="edit-id-button">Edit</button>
-                        <input type="text" id="new-id" style="display:none;" placeholder="New ID">
-                        <button id="save-id-button" style="display: none;">Save</button>
-                    </p>
-                    <p>
-                        <strong>Password:</strong> <span id="password"></span>
-                        <button id="edit-password-button">Edit</button>
-                        <input type="password" id="new-password" style="display: none;" placeholder="New Password">
-                        <button id="save-password-button" style="display: none;">Save</button>
-                    </p>
-                </div>
+            <div class="innerbox">
+                <div class="rightbox"></div>
+                <div class="leftbox"></div>
+                <div class="lines"></div>
             </div>
-
-
-            <div class="info-row">
-                <div class="info-card">
-                    <p><strong>Class ID:</strong> <span id="class_id"></span></p>
-                </div>
-                <div class="info-card">
-                    <p><strong>Week:</strong> <span id="week"></span></p>
-                </div>
-                <div class="info-card">
-                    <p><strong>Teammate:</strong> <span id="teammate"></span></p>
-                </div>
-            </div>
-
-
         </div>
     </div>
+    <div class="title">My Information</div>
+    <div class="account-info">
+        <b class="card-title">Account Info</b>
+        <div class="account-details">
+            <p><strong>Username:</strong> <span id="username"></span></p>
+            <p>
+                <strong>Login ID:</strong> <span id="login_id"></span>
+                <button id="edit-id-button">Edit</button>
+                <input type="text" id="new-id" style="display:none;" placeholder="New ID">
+                <button id="save-id-button" style="display: none;">Save</button>
+            </p>
+            <p>
+                <strong>Password:</strong> <span id="password"></span>
+                <button id="edit-password-button">Edit</button>
+                <input type="password" id="new-password" style="display: none;" placeholder="New Password">
+                <button id="save-password-button" style="display: none;">Save</button>
+            </p>
+        </div>
+    </div>
+
+
+    <div class="info-row">
+        <div class="info-card">
+            <p><strong>Class ID:</strong> <span id="class_id"></span></p>
+        </div>
+        <div class="info-card">
+            <p><strong>Week:</strong> <span id="week"></span></p>
+        </div>
+        <div class="info-card">
+            <p><strong>Teammate:</strong> <span id="teammate"></span></p>
+        </div>
+    </div>
+
     <script type="module" src="userInfo.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
