@@ -5,35 +5,60 @@
     <meta name="viewport" content="initial-scale=1, width=device-width">
     <title>Operate</title>
     <link rel="stylesheet" href="adminOperate.css" />
-    <link rel="stylesheet" href="../sidebar/adminSidebar.css">
+    <link rel="stylesheet" href="../sidebarDesign/adminNavigationbar.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <script type="module" src="adminOperate.js"></script>
 </head>
 <body>
     <div id="sidebar-container"></div>
     
-    <div class="admin-operating">
-        <div class="left-container">
-            <h1>발표 순서 정하기</h1>
-            <input type="text" id="class-id-input" placeholder="Class ID를 입력하세요" />
-            <input type="text" id="week-input" placeholder="Week를 입력하세요" />
-            <button id="set-order-button">+</button>
-            <button id="start-review-button">Start review</button>
-            <div id="order-list-container">
-                <!-- 여기에 showOrder 함수의 결과가 표시됩니다. -->
+    <div class="container">
+        <div class="content">
+            <div class="innerbox">
+                <div class="lines"></div>
+
+
+                <div class="left-container">
+
+                    <div class="upper-container">
+                        <div class="title-section1">
+                            <h1>발표 순서 정하기</h1>
+                        </div>
+                        <div class="content-section">
+                            <input type="text" id="class-id-input" placeholder="Class ID를 입력하세요" />
+                            <input type="text" id="week-input" placeholder="Week를 입력하세요" />
+                        </div>
+                    </div>
+
+                    <div class="lower-container">
+                        <button id="show-results-button">Show Results</button>
+                    </div>
+
+                </div>
+
+
+                <div class="right-container" id="right-container">
+                    <button id="set-order-button">+</button>
+                    <button id="start-review-button">Start review</button>
+                    <div id="order-list-container">
+                        <!-- 여기에 showOrder 함수의 결과가 표시됩니다. -->
+                    </div>
+                </div>
+
+
             </div>
         </div>
-
-        <div class="right-container" id="right-container">
-            <button id="show-results-button">Show Results</button>
-        </div>
     </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            fetch('../sidebar/adminSidebar.html')
+            fetch('../sidebarDesign/adminNavigationbar.html')
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById('sidebar-container').innerHTML = data;
+                    const script = document.createElement('script');
+                    script.src = '../sidebarDesign/adminNavigationbar.js';
+                    document.body.appendChild(script);
                 });
         });
     </script>
