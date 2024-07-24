@@ -62,18 +62,13 @@ body {
     /* Change the color on hover */
 }
 
-.nav-item.member-info {
-    background-image: url('tab_blue.svg');
+.nav-item.setting {
+    background-image: url('tab_yellow.svg');
     z-index: 4;
 }
-.nav-item.team {
-    background-image: url('tab_red.svg');
+.nav-item.operate {
+    background-image: url('tab_blue.svg');
     z-index: 3;
-}
-
-.nav-item.review {
-    background-image: url('tab_green.svg');
-    z-index: 2;
 }
 
 .nav-list .active {
