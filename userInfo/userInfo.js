@@ -29,9 +29,11 @@ document.addEventListener('DOMContentLoaded', async function() {
             const userInfo = await response.json();
             document.getElementById('username').textContent = userInfo.username;
             document.getElementById('login_id').textContent = userInfo.login_id;
+            document.getElementById('password').textContent = userInfo.password;
             document.getElementById('class_id').textContent = userInfo.class_id;
             document.getElementById('week').textContent = userInfo.week;
-            document.getElementById('teammate').textContent = userInfo.teammate;
+            document.getElementById('teammate').textContent = userInfo.teammate_name_list.join(' ');
+            
         } else {
             console.error('Failed to fetch user info');
         }
@@ -42,6 +44,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     document.getElementById('edit-id-button').addEventListener('click', () => {
         document.getElementById('new-id').style.display = 'inline';
         document.getElementById('save-id-button').style.display = 'inline';
+        document.getElementById('edit-id-button').style.display = 'none';
     });
 
     document.getElementById('save-id-button').addEventListener('click', async () => {
@@ -60,6 +63,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                 document.getElementById('userId').textContent = newId;
                 document.getElementById('new-id').style.display = 'none';
                 document.getElementById('save-id-button').style.display = 'none';
+                document.getElementById('edit-id-button').style.display = 'inline';
             } else {
                 console.error('Failed to update ID');
             }
@@ -72,6 +76,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     document.getElementById('edit-password-button').addEventListener('click', () => {
         document.getElementById('new-password').style.display = 'inline';
         document.getElementById('save-password-button').style.display = 'inline';
+        document.getElementById('edit-password-button').style.display = 'none';
     });
 
     document.getElementById('save-password-button').addEventListener('click', async () => {
@@ -90,6 +95,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                 document.getElementById('password').textContent = newPassword;
                 document.getElementById('new-password').style.display = 'none';
                 document.getElementById('save-password-button').style.display = 'none';
+                document.getElementById('edit-password-button').style.display = 'inline';
             } else {
                 console.error('Failed to update PW');
             }

@@ -19,6 +19,7 @@ body {
     z-index:20;
 }
 .innerbox {
+    display: flex;
     margin-top: 5vh;
     height: 70vh;
     margin-left: 2.5vw;
@@ -37,45 +38,58 @@ body {
     pointer-events: none;
 }
 .rightbox {
+    flex:1;
     height: 100%;
     width: 50%;
     background-color: white;
 }
+.leftbox {
+    flex:1;
+    height: 100%;
+    width: 50%;
+}
 
 .title {
+    padding-top: 3vh;
+    padding-left: 3vw;
     font-size: 2.5vw;
     font-weight: bold;
     margin-bottom: 4vw;
 }
 
-.account-info { /*acount info 카드*/
-    background-color: #fffffe;
+#edit-id-button, #edit-password-button {
+    float: right;
+    margin-right: 5vw;
+    vertical-align: middle;
+}
+#save-id-button, #save-password-button {
+    vertical-align: middle;
+}
+input[type="text"], input[type="password"] {
     width: 20vw;
-    height: 15vw;
-    margin-bottom: 2vw;
-    position: relative;
-    text-align: left;
-    padding: 2vw;
+    height: 5vh;
+    vertical-align: middle;
+    font-size: 2vw;
+    padding: 0.5vw;
+    border: 1px solid #c4c5c6;
+    background-color: #c4c5c6;
+    box-sizing: border-box;
 }
 
-.info-card {
-    background-color: #fffffe;
-    height: 8vw;
-    width: 18vw;
-    padding: 1vw;
-    margin-right: 2vw;
-    position: relative;
+.leftbox .left-item{
+    width: 100%;
+    height: 25%;
     text-align: center;
-
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .account-details p {
+    padding-left: 3vw;
     margin-top: 2vw;
 }
 
-.card-title {
-    font-size: 1.5vw;
-}
 
 .info-row {
     display: flex;
@@ -84,13 +98,23 @@ body {
 }
 
 strong {
-    font-size: 1.2vw;
-    margin-bottom: 0.5vw;
+    font-size: 3vw;
+    vertical-align: middle;
 }
 
 span {
-    font-size: 1vw;
-    margin: 0.5vw;
+    font-size: 5vw;
+    vertical-align: middle;
+}
+
+teammate {
+    font-size: 4vw;
+    vertical-align: middle;
+}
+
+midText {
+    font-size: 2vw;
+    vertical-align: middle;
 }
 
 div.account-info button#save-id-button {

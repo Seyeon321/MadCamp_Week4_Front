@@ -1,71 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>User Info</title>
-    <link rel="stylesheet" href="userInfo.css">
-    <link rel="stylesheet" href="../sidebarDesign/userNavigationbar.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-</head>
-<body>
+    <link rel="stylesheet" href="userInfo.css" />
+    <link rel="stylesheet" href="../sidebarDesign/userNavigationbar.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <div id="sidebar-container"></div>
 
     <div class="container">
-        <div class="content">
-            <div class="innerbox">
-                <div class="rightbox"></div>
-                <div class="leftbox"></div>
-                <div class="lines"></div>
+      <div class="content">
+        <div class="innerbox">
+					<div class="lines"></div>
+          <div class="rightbox">
+            <div class="title">계정 정보</div>
+            <div class="account-details">
+              <p><midText>Username:  </midText> <midText id="username"></midText></p>
+              <p>
+                <midText>Login ID:  </midText> <midText id="login_id"></midText>
+                <button id="edit-id-button"type="submit" style="border: 0; background: transparent">
+									<img src = "edit-svgrepo-com.svg" width="40vw" height="40vh" alt="edit" >
+								</button>
+              </p>
+							<p>
+								<input
+                  type="text"
+                  id="new-id"
+                  style="display: none"
+                  placeholder="New ID"
+                />
+                <button id="save-id-button"type="submit" style="border: 0; background: transparent; display: none">
+									<img src = "save-file-svgrepo-com.svg" width="50" height="50" alt="save" >
+								</button>
+							</p>
+              <p>
+                <midText>Password:  </midText> <midText id="password"></midText>
+                <button id="edit-password-button"type="submit" style="border: 0; background: transparent">
+									<img src = "edit-svgrepo-com.svg" width="40vw" height="40vh" alt="edit" >
+								</button>
+              </p>
+							<p>
+								<input
+                  type="password"
+                  id="new-password"
+                  style="display: none"
+                  placeholder="New Password"
+                />
+                <button id="save-password-button" type="submit" style="border: 0; background: transparent; display: none">
+									<img src = "save-file-svgrepo-com.svg" width="50" height="50" alt="save" >
+								</button>
+							</p>
             </div>
+          </div>
+          <ul class="leftbox">
+						<li class="left-item 1row">
+							<p><span id="class_id"></span><strong> 분반</strong> </p>
+						</li>
+						<li class="left-item 2row">
+							<p><span id="week"></span><strong> 주차</strong> </p>
+						</li>
+						<li class="left-item 3row">
+							<p><strong>팀원  </strong> <teammate id="teammate"></teammate></p>
+						</li>
+						<li class="left-item 4row"></li>
+					</ul>
+          
         </div>
-    </div>
-    <div class="title">My Information</div>
-    <div class="account-info">
-        <b class="card-title">Account Info</b>
-        <div class="account-details">
-            <p><strong>Username:</strong> <span id="username"></span></p>
-            <p>
-                <strong>Login ID:</strong> <span id="login_id"></span>
-                <button id="edit-id-button">Edit</button>
-                <input type="text" id="new-id" style="display:none;" placeholder="New ID">
-                <button id="save-id-button" style="display: none;">Save</button>
-            </p>
-            <p>
-                <strong>Password:</strong> <span id="password"></span>
-                <button id="edit-password-button">Edit</button>
-                <input type="password" id="new-password" style="display: none;" placeholder="New Password">
-                <button id="save-password-button" style="display: none;">Save</button>
-            </p>
-        </div>
-    </div>
-
-
-    <div class="info-row">
-        <div class="info-card">
-            <p><strong>Class ID:</strong> <span id="class_id"></span></p>
-        </div>
-        <div class="info-card">
-            <p><strong>Week:</strong> <span id="week"></span></p>
-        </div>
-        <div class="info-card">
-            <p><strong>Teammate:</strong> <span id="teammate"></span></p>
-        </div>
+      </div>
     </div>
 
     <script type="module" src="userInfo.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            fetch('../sidebarDesign/userNavigationbar.html')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('sidebar-container').innerHTML = data;
-                    const script = document.createElement('script');
-                    script.src = '../sidebarDesign/userNavigationbar.js';
-                    document.body.appendChild(script);
-                });
-        });
+      document.addEventListener("DOMContentLoaded", function () {
+        fetch("../sidebarDesign/userNavigationbar.html")
+          .then((response) => response.text())
+          .then((data) => {
+            document.getElementById("sidebar-container").innerHTML = data;
+            const script = document.createElement("script");
+            script.src = "../sidebarDesign/userNavigationbar.js";
+            document.body.appendChild(script);
+          });
+      });
     </script>
-</body>
+  </body>
 </html>
-

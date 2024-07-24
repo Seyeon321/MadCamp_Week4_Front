@@ -4,6 +4,7 @@ body {
     padding: 0;
     background-color: #c4c5c6;
 }
+
 .container {
     display: flex;
     height: 80vh;
@@ -12,16 +13,40 @@ body {
 
 .content {
     flex: 1;
-    padding: 3vw;
     margin-left: 5vw;
     margin-right: 5vw;
     background-color: #f9dae2;
     z-index:20;
 }
-.left-container {
+.innerbox {
     display: flex;
-    flex-direction: column;
-    gap: 2rem;
+    margin-top: 5vh;
+    height: 70vh;
+    margin-left: 2.5vw;
+    width: 85vw;
+    margin-bottom: -70vh;
+}
+.lines {
+    position: absolute;
+    top: 20vh;
+    left: 7.5vw;
+    height: 70vh;
+    width: 85vw;
+    background: url('46box.svg') no-repeat center center;
+    background-size: cover;
+    z-index: 15;
+    pointer-events: none;
+}
+
+.leftbox {
+    height: 100%;
+    width: 40%;
+    background-color: red;
+}
+.rightbox {
+    height: 100%;
+    width: 60%;
+    background-color: yellow;
 }
 
 .create-team-container,
@@ -47,7 +72,7 @@ label {
 }
 
 input[type="text"] {
-    width: 100%;
+    width: 50%;
     padding: 0.5rem;
     border: 1px solid #ddd;
     border-radius: 4px;
