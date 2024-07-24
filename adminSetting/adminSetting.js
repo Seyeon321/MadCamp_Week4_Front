@@ -132,10 +132,12 @@ document.addEventListener('DOMContentLoaded', async function() {
                 students.forEach(stuItem => {
                     const stuDiv = document.createElement('div');
                     stuDiv.className = 'student-item';
-                
-                    const nameSpan = document.createElement('span');
-                    nameSpan.className = 'student-name';
-                    nameSpan.textContent = stuItem.name;
+                    
+                    const infoSpan = document.createElement('span');
+                    infoSpan.className = 'student-info';
+                    infoSpan.innerHTML = `<span class="student-name">${stuItem.name}</span>
+                                        <span class="student-login">${stuItem.login_id}</span>
+                                        <span class="student-password">${stuItem.password}</span>`;
                 
                     const deleteButton = document.createElement('button');
                     deleteButton.className = 'action-button delete-button';
@@ -145,7 +147,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                 
                     deleteButton.appendChild(deleteSpan);
                     
-                    stuDiv.appendChild(nameSpan);
+                    stuDiv.appendChild(infoSpan);
                     stuDiv.appendChild(deleteButton);
                     
                     deleteButton.addEventListener('click', async () => {
