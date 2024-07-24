@@ -1,6 +1,11 @@
-<svg id="e1VXLNrGF3T1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+<svg cache-id="918bb54f3a72417a9f4623893242d0be" id="eeqzyODHikQ1"
+    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
     viewBox="0 0 300 300" shape-rendering="geometricPrecision" text-rendering="geometricPrecision">
     <rect width="200" height="50" rx="0" ry="0" transform="translate(50 100)" fill="#f9dae2"
+        stroke-width="0" />
+    <rect width="180.255028" height="50" rx="0" ry="0" transform="matrix(1.220493 0 0 1 40 125)"
+        fill="#f9dae2" stroke-width="0" />
+    <rect width="250" height="50" rx="0" ry="0" transform="translate(25 150)" fill="#f9dae2"
         stroke-width="0" />
     <polygon
         points="-13.430484,-42.698211 10.116769,2.658159 -36.977736,2.658159 -13.430484,-42.698211"

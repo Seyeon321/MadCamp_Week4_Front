@@ -97,5 +97,5 @@ document.addEventListener('DOMContentLoaded', async function() {
             console.error('Error updating PW:', error);
         }
         location.reload();
-     });
+    });
 });

@@ -22,7 +22,7 @@ body {
     justify-content: space-between;
     background-blend-mode: darken;
     background-size: cover;
-    padding-top:10vh;
+    padding-top:5vh;
     padding-left: 5vw;
     z-index: 1;
 }
@@ -33,15 +33,18 @@ body {
 }
 
 .nav-list li {
-    background-size: 19vw, 10vh; /* Set relative size of the background image */
-    width: 16vw; /* Set a fixed width */
-    height: 10vh;
+    background-size: 20vw, 15vh; /* Set relative size of the background image */
+    width: 16.66vw; /* Set a fixed width */
+    height: 15vh;
     background-repeat: no-repeat;
     background-position: center;
     margin-left: -0.6vw;
     margin-right: -0.6vw;
     z-index: 1;
     text-align: center;
+    padding-top: 5vh;
+    transition: margin-top ease-in-out;
+    transition-duration :0.25s;
 }
 .nav-list li:first-child {
     margin-left: 0;
@@ -53,12 +56,11 @@ body {
 .nav-list li a {
     text-decoration: none;
     color: #000;
-    font-size: 1.1rem;
-    transition: color 0.3s ease-in-out;
+    font-size: 1rem;
 }
 
-.nav-list li a:hover {
-    color: #ffd700;
+.nav-list li:hover {
+    margin-top: -3vh;
     /* Change the color on hover */
 }
 
@@ -72,7 +74,7 @@ body {
 }
 
 .nav-item.review {
-    background-image: url('tab_green.svg');
+    background-image: url('tab_yellow.svg');
     z-index: 2;
 }
 
