@@ -80,17 +80,12 @@ document.addEventListener('DOMContentLoaded', async function() {
 
                 if(data.team_list && data.team_list.length > 0) {
                     data.team_list.forEach(team => {
-                        const teamDiv = document.createElement('div');
-                        teamDiv.className = 'team';
-
-                        const studentList = document.createElement('ul');
-                        team.student_name_list.forEach(student => {
-                            const studentItem = document.createElement('li');
-                            studentItem.textContent = student;
-                            studentList.appendChild(studentItem);
-                        });
-                        teamDiv.appendChild(studentList);
-                        orderListContainer.appendChild(teamDiv);
+                        const teamRow = document.createElement('div');
+                        teamRow.className = 'team';
+                        let students = team.student_name_list.map(name => `${name}`).join(' & ')
+                        teamRow.textContent = students
+                        console.log(students)
+                        orderListContainer.appendChild(teamRow);
                     });
                 } else orderListContainer.textContent = '순서를 생성해주세요';
             } else console.error('Failed to fetch order');
@@ -113,26 +108,25 @@ document.addEventListener('DOMContentLoaded', async function() {
                     'Content-Type': 'application/json'
                 }, body: JSON.stringify({class_id: currentClassId, week: currentWeek})
             });
-            const rightContainer = document.getElementById('right-container');
+            const rightContainer = document.getElementById('lower-container');
             rightContainer.innerHTML = '';
             if (response.ok) {
                 const data = await response.json();
                 const sortedTeams = data.sortedTeams;
 
                 if (sortedTeams && sortedTeams.length > 0) {
-                    rightContainer.innerHTML = `<h1>${currentWeek}주 금픽 팀</h1>`;
+                    rightContainer.innerHTML = 
+                    `<div class="title-section1">
+                        <h1>${currentWeek}주 금픽 팀</h1>
+                    </div>`;
                     sortedTeams.slice(0, 2).forEach(team => {
-                        const teamDiv = document.createElement('div');
-                        teamDiv.className = 'team';
+                        const teamRow = document.createElement('div');
+                        teamRow.className = 'selected-team';
+                        let students = team.team_member_list.map(name => `${name}`).join(' & ')
+                        teamRow.textContent = students
+                        console.log(students)
+                        rightContainer.appendChild(teamRow);
 
-                        const studentList = document.createElement('ul');
-                        team.team_member_list.forEach(student => {
-                            const studentItem = document.createElement('li');
-                            studentItem.textContent = student;
-                            studentList.appendChild(studentItem);
-                        });
-                        teamDiv.appendChild(studentList);
-                        rightContainer.appendChild(teamDiv);
                     });
                 }else rightContainer.textContent = '결과를 가져올 수 없습니다.';
             } else {

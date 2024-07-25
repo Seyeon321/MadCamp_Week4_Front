@@ -68,7 +68,7 @@ body {background-color: #c4c5c6    ;}
 }
 input[type="text"], input[type="password"] {
     position: absolute;
-    right: 37vw;
+    left: 30vw;
     width: 20vw;
     height: 6vh;
     font-size: 2vw;
