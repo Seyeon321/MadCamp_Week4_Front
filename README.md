@@ -71,7 +71,7 @@ KAIST SoC 22
 
 **User Page**
 
-![유저 계정 정보 화면](https://prod-files-secure.s3.us-west-2.amazonaws.com/f6cb388f-3934-47d6-9928-26d2e10eb0fc/1e5c6958-a3ae-45a6-acfe-fe85949ea318/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2024-07-25_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_6.19.00.png)
+![유저 계정 정보 화면](./image1.png)
 
 ![유저 팀 구성 화면](https://prod-files-secure.s3.us-west-2.amazonaws.com/f6cb388f-3934-47d6-9928-26d2e10eb0fc/7894e582-6045-451e-bfac-8244f4ec2750/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2024-07-25_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_6.19.24.png)
 
