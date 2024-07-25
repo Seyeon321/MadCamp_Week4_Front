@@ -4,6 +4,7 @@ body {
     padding: 0;
     background-color: #c4c5c6;
 }
+
 .container {
     display: flex;
     height: 80vh;
@@ -12,20 +13,64 @@ body {
 
 .content {
     flex: 1;
-    padding: 3vw;
     margin-left: 5vw;
     margin-right: 5vw;
     background-color: #fff1ce;
     z-index:20;
 }
-
-.review-container {
-    margin-left: 20vw;
-    padding: 20px;
+.innerbox {
+    display: flex;
+    margin-top: 5vh;
+    height: 70vh;
+    margin-left: 2.5vw;
+    width: 85vw;
+    margin-bottom: -70vh;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.lines_no_review {
+    position: absolute;
+    top: 20vh;
+    left: 7.5vw;
+    height: 70vh;
+    width: 85vw;
+    background: url('wholebox.svg') no-repeat center center;
+    background-size: cover;
+    z-index: 15;
+    pointer-events: none;
+}
+.lines_open_review {
+    position: absolute;
+    top: 20vh;
+    left: 7.5vw;
+    height: 70vh;
+    width: 85vw;
+    background: url('5rowbox.svg') no-repeat center center;
+    background-size: cover;
+    z-index: 15;
+    pointer-events: none;
+}
+.review_not_open {
+    text-align: center;
+    vertical-align: middle;
+    font-size: 3vw;
 }
 
-.button-container {
-    padding: 20px;
+.review-container {
+    width: 100%;
+    height: 100%;
+}
+
+.review-container .criteria-item{
+    background-color: coral;
+    width: 100%;
+    height: 20%;
+    text-align: center;
+    display: flex;
+    align-items: center; 
+    justify-content: left;
+    
 }
 
 h2 {
@@ -36,10 +81,6 @@ h2 {
 ul {
     list-style-type: none;
     padding: 0;
-}
-
-li {
-    margin: 5px 0;
 }
 
 label {
@@ -59,4 +100,32 @@ button {
     padding: 10px 20px;
     cursor: pointer;
     margin: 10px 5px;
+}
+
+strong {
+    font-size: 3vw;
+    vertical-align: middle;
+}
+
+midText {
+    font-size: 2vw;
+    vertical-align: middle;
+}
+criteria_title{
+    padding-left: 3vw;
+    font-size: 3vw;
+    font-weight: 700;
+    vertical-align: middle;
+    text-align: left;
+    display: inline-block;
+    text-align: left;
+
+}
+criteria_content {
+    padding-left: 1vw;
+    font-size: 2vw;
+    vertical-align: middle;
+    text-align: middle;
+    display: inline-block;
+
 }

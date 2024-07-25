@@ -88,41 +88,62 @@ document.addEventListener('DOMContentLoaded', async function() {
 //==============================팀별 리뷰 화면 보여주기==============================
     function displayTeam() {
         const team = teamList[currentTeamIndex];
-        const reviewContainer = document.querySelector('.review-container');
-        reviewContainer.innerHTML = `
-            <h2>Team ${currentTeamIndex + 1}</h2>
-            <ul>
-                ${team.student_name_list.map(name => `<li>${name}</li>`).join('')}
-            </ul>
-            <div>
-                <label>Criteria 1: 
-                    <select id="criteria1">
-                        <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option>
-                    </select>
-                </label>
-                <label>Criteria 2: 
-                    <select id="criteria2">
-                        <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option>
-                    </select>
-                </label>
-                <label>Criteria 3: 
-                    <select id="criteria3">
-                        <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option>
-                    </select>
-                </label>
-                <label>Criteria 4: 
-                    <select id="criteria4">
-                        <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option>
-                    </select>
-                </label>
-            </div>
-        `;
-
-        const buttonContainer = document.querySelector('.button-container');
-        buttonContainer.innerHTML = `
-            ${currentTeamIndex > 0 ? '<button id="back-button">Back</button>' : ''}
-            ${currentTeamIndex < teamList.length - 1 ? '<button id="next-button">Next</button>' : '<button id="submit-button">Submit</button>'}
-        `;
+        const innerbox = document.querySelector('.innerbox');
+        innerbox.innerHTML = 
+        `
+        <div class="lines_open_review"></div>
+        <ul class="review-container">
+            <!-- 여기에 팀별 리뷰 내용이 표시됩니다 -->
+              <li class="criteria-item 1row">
+                <criteria_title>기술적 완성도</criteria_title>
+                <criteria_content> 오류 없이 안정적으로 돌아가나요?</criteria_content>
+                <select id="criteria1">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                </select>
+              </li>
+              <li class="criteria-item 2row">
+                <criteria_title>기술적 난이도</criteria_title>
+                <criteria_content> 문제 해결을 위해 적절한 기술을 활용했나요?</criteria_content>
+                <select id="criteria2">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                </select>
+              </li>
+              <li class="criteria-item 3row">
+                <criteria_title>심미성</criteria_title>
+                <criteria_content> 주제에 맞는 디자인인가요?</criteria_content>
+                <select id="criteria3">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                </select>
+              </li>
+              <li class="criteria-item 4row">
+                <criteria_title>성실성</criteria_title>
+                <criteria_content> 일과 중에 열심히 참여했나요?</criteria_content>
+                <select id="criteria4">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                </select>
+              </li>
+              <li class="criteria-item 5row">
+                ${currentTeamIndex > 0 ? '<button id="back-button">Back</button>' : ''}
+                <ul>
+                  <strong>${team.student_name_list.map(name => `<li>${name}</li>`).join(',')}</strong>
+                </ul>
+                ${currentTeamIndex < teamList.length - 1 ? '<button id="next-button"> Next</button>' : '<button id="submit-button">Submit</button>'}
+              </li>
+          </ul>
+`;
+        
 
         if(currentTeamIndex > 0) {
             document.getElementById('back-button').addEventListener('click', () => {

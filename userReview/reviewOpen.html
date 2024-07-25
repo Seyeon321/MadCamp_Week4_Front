@@ -1,0 +1,55 @@
+<div class="review-container">
+  <!-- 여기에 팀별 리뷰 내용이 표시됩니다 -->
+
+  <h2>Team ${currentTeamIndex + 1}</h2>
+  <ul>
+    ${team.student_name_list.map(name => `
+    <li>${name}</li>
+    `).join('')}
+  </ul>
+  <ul class="reviewbox">
+    <li class="criteria-item 1row">
+      <strong>기술적 완성도</strong>
+      <select id="criteria1">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+      </select>
+    </li>
+    <li class="criteria-item 1row">
+      <strong>기술적 난이도</strong>
+      <select id="criteria2">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+      </select>
+    </li>
+    <li class="criteria-item 1row">
+      <strong>심미성</strong>
+      <select id="criteria3">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+      </select>
+    </li>
+    <li class="criteria-item 1row">
+      <strong>성실성</strong>
+      <select id="criteria4">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+      </select>
+    </li>
+  </ul>
+</div>
+<div class="button-container">
+  <!-- 여기에 버튼들이 표시됩니다 -->
+  ${currentTeamIndex > 0 ? '<button id="back-button">Back</button>' : ''}
+  ${currentTeamIndex < teamList.length - 1 ? '<button id="next-button">
+    Next</button
+  >' : '<button id="submit-button">Submit</button>'}
+</div>
