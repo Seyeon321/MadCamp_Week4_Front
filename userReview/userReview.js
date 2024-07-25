@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     let teamList = [];
     let currentTeamIndex = 0;
     let reviewList = [];
+    let savedChoice = {};
 //==============================token sent==============================
 
 //==============================review 열렸는지 확인: GET==============================
@@ -83,6 +84,13 @@ document.addEventListener('DOMContentLoaded', async function() {
             else console.error('Failed to submit review');
         } catch (error) {
             console.error('Error submitting review', error);
+        } finally {
+          const innerbox = document.querySelector('.innerbox');
+          innerbox.innerHTML =
+          `
+          <div class="review_not_open">제출이 완료되었습니다</div>
+					<div class="lines_no_review"></div>
+          `
         }
     }
 //==============================팀별 리뷰 화면 보여주기==============================
@@ -97,53 +105,80 @@ document.addEventListener('DOMContentLoaded', async function() {
               <li class="criteria-item 1row">
                 <criteria_title>기술적 완성도</criteria_title>
                 <criteria_content> 오류 없이 안정적으로 돌아가나요?</criteria_content>
-                <select id="criteria1">
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                </select>
+                <div class ="input-container" id="container1">
+                  <div class="choice" choice-index="1"></div>
+                  <div class="choice" choice-index="2"></div>
+                  <div class="choice" choice-index="3"></div>
+                  <div class="choice" choice-index="4"></div>
+                </div>
               </li>
               <li class="criteria-item 2row">
                 <criteria_title>기술적 난이도</criteria_title>
                 <criteria_content> 문제 해결을 위해 적절한 기술을 활용했나요?</criteria_content>
-                <select id="criteria2">
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                </select>
+                <div class ="input-container" id="container2">
+                  <div class="choice" choice-index="1"></div>
+                  <div class="choice" choice-index="2"></div>
+                  <div class="choice" choice-index="3"></div>
+                  <div class="choice" choice-index="4"></div>
+                </div>
               </li>
               <li class="criteria-item 3row">
                 <criteria_title>심미성</criteria_title>
                 <criteria_content> 주제에 맞는 디자인인가요?</criteria_content>
-                <select id="criteria3">
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                </select>
+                <div class ="input-container" id="container3">
+                  <div class="choice" choice-index="1"></div>
+                  <div class="choice" choice-index="2"></div>
+                  <div class="choice" choice-index="3"></div>
+                  <div class="choice" choice-index="4"></div>
+                </div>
               </li>
               <li class="criteria-item 4row">
                 <criteria_title>성실성</criteria_title>
                 <criteria_content> 일과 중에 열심히 참여했나요?</criteria_content>
-                <select id="criteria4">
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                </select>
+                <div class ="input-container" id="container4">
+                  <div class="choice" choice-index="1"></div>
+                  <div class="choice" choice-index="2"></div>
+                  <div class="choice" choice-index="3"></div>
+                  <div class="choice" choice-index="4"></div>
+                </div>
               </li>
               <li class="criteria-item 5row">
-                ${currentTeamIndex > 0 ? '<button id="back-button">Back</button>' : ''}
+                ${currentTeamIndex > 0 ? 
+                '<button class="left-button"id="back-button"><img src = "left-arrow.svg" width="50vw" height="50vh" alt="back" ></button>' : ''}
                 <ul>
-                  <strong>${team.student_name_list.map(name => `<li>${name}</li>`).join(',')}</strong>
+                  <student_name>${team.student_name_list.map(name => `${name}`).join(', ')}</student_name>
                 </ul>
-                ${currentTeamIndex < teamList.length - 1 ? '<button id="next-button"> Next</button>' : '<button id="submit-button">Submit</button>'}
+                ${currentTeamIndex < teamList.length - 1 ? 
+                  '<button class="right-button" id="next-button"><img src = "right-arrow.svg" width="50vw" height="50vh" alt="next" ></button>' 
+                  : '<button class="right-button" id="submit-button"><img src = "send_plane.svg" width="50vw" height="50vh" alt="submit" ></button>'}
               </li>
           </ul>
 `;
-        
+
+        savedChoice = {};
+        document.querySelectorAll('.input-container').forEach(container => {
+          const parts = container.querySelectorAll('.choice');
+          parts.forEach(part => {
+            part.addEventListener('click', () => {
+              const index = part.getAttribute('choice-index');
+              highlightParts(container, index);
+            });
+          });
+          //highlightParts(container, 1)
+        });
+
+        function highlightParts(container, count) {
+          const parts = container.querySelectorAll('.choice');
+          parts.forEach(part => {
+            const index = part.getAttribute('choice-index');
+            if (index <= count) {
+              part.classList.add('active');
+            } else {
+              part.classList.remove('active');
+            }
+          });
+          savedChoice[container.id] = count
+        }
 
         if(currentTeamIndex > 0) {
             document.getElementById('back-button').addEventListener('click', () => {
@@ -169,10 +204,10 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     function saveCurrentReview() {
         const team = teamList[currentTeamIndex];
-        const criteria1 = document.getElementById('criteria1').value;
-        const criteria2 = document.getElementById('criteria2').value;
-        const criteria3 = document.getElementById('criteria3').value;
-        const criteria4 = document.getElementById('criteria4').value;
+        const criteria1 = savedChoice['container1'];
+        const criteria2 = savedChoice['container1'];
+        const criteria3 = savedChoice['container1'];
+        const criteria4 = savedChoice['container1'];
 
         const review = {
             team_id: team.team_id,
@@ -181,7 +216,6 @@ document.addEventListener('DOMContentLoaded', async function() {
             criteria3: parseInt(criteria3),
             criteria4: parseInt(criteria4)
         };
-
         reviewList[currentTeamIndex] = review;
     }
 
