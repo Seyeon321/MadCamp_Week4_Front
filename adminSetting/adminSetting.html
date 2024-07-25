@@ -5,47 +5,59 @@
     <meta name="viewport" content="initial-scale=1, width=device-width">
     <title>Setting</title>
     <link rel="stylesheet" href="adminSetting.css" />
-    <link rel="stylesheet" href="../sidebar/adminSidebar.css">
+    <link rel="stylesheet" href="../sidebarDesign/adminNavigationbar.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <script type="module" src="adminSetting.js"></script>
 </head>
 <body>
     <div id="sidebar-container"></div>
     
-    <div class="admin-setting">
-        <div class="left-container">
-            <div class="title-section1">
-                <b class="create-new-class">새로운 분반 생성하기</b>
-                <div class="create-new-class1">
-                    <div class="plus-sign">+</div>
+    <div class="container">
+        <div class="content">
+            <div class="innerbox">
+                <div class="lines"></div>
+                <div class="left-container">
+                    <div class="title-section1">
+                        <b class="create-new-class">새로운 분반 생성하기</b>
+                        <div class="create-new-class1">
+                            <div class="plus-sign">+</div>
+                        </div>
+                    </div>
+                    <div class="class-list"></div>
+                </div>
+                
+                <div class="right-container">
+                    <div class="title-section2">
+                        <b class="class-info">분반 정보</b>
+                        <div class="load-button-container">
+                            <button id="load-students-button" class="action-button">Load Students</button>
+                        </div>
+                        <div class="load-button-container2">
+                            <button id="add-students-button" class="action-button add-button">+</button>
+                        </div>
+                    </div>
+                    <div class="class-stu-list">
+                        <div class="student-info">
+                            <input type="text" class="student-input" placeholder="학생 이름 입력">
+                        </div>
+                        <div class="student-list">
+                        <!-- Existing students will be populated dynamically -->
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="class-list"></div>
-        </div>
-
-        <div class="right-container">
-            <div class="title-section2">
-                <b class="class-info">분반 정보</b>
-                <button id="load-students-button" class="action-button">Load Students</button>
-            </div>
-            <div class="class-stu-list">
-                <div class="student-info">
-                    <input type="text" class="student-input" placeholder="학생 이름 입력">
-                    <button id="add-students-button" class="action-button add button">+</button>
-                </div>
-                <div class="student-list">
-                <!-- Existing students will be populated dynamically -->
-                </div>
-            </div>
-        </div>
-
+        </div>     
     </div>
+    
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            fetch('../sidebar/adminSidebar.html')
+            fetch('../sidebarDesign/adminNavigationbar.html')
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById('sidebar-container').innerHTML = data;
+                    const script = document.createElement('script');
+                    script.src = '../sidebarDesign/adminNavigationbar.js';
+                    document.body.appendChild(script);
                 });
         });
     </script>
