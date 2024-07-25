@@ -37,7 +37,7 @@ KAIST SoC 22
 
 **Admin Page**
 
-![파일철 UI 시연](https://prod-files-secure.s3.us-west-2.amazonaws.com/f6cb388f-3934-47d6-9928-26d2e10eb0fc/f3f84d8f-ee89-492f-87c1-49b5062b4534/%E1%84%92%E1%85%AA%E1%84%86%E1%85%A7%E1%86%AB_%E1%84%80%E1%85%B5%E1%84%85%E1%85%A9%E1%86%A8_2024-07-25_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_6.15.17.mov)
+![파일철 UI 시연](./readmeContent/video1.mov)
 
 전체적인 디자인 컨셉은 ‘파일철’로 정했습니다.
 
