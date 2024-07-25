@@ -68,7 +68,7 @@ body {background-color: #c4c5c6    ;}
 }
 input[type="text"], input[type="password"] {
     position: absolute;
-    left: 30vw;
+    right: 37vw;
     width: 20vw;
     height: 6vh;
     font-size: 2vw;
@@ -111,7 +111,6 @@ button[type="submit"] {
 button[type="submit"]:hover {
     background-color: #000;
 }
-
 
 
 
