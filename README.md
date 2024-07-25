@@ -37,7 +37,7 @@ KAIST SoC 22
 
 **Admin Page**
 
-![파일철 UI 시연](./readmeContent/video1.mov)
+[파일철 UI 시연](./readmeContent/video1.mov)
 
 전체적인 디자인 컨셉은 ‘파일철’로 정했습니다.
 
