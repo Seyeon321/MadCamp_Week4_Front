@@ -71,7 +71,7 @@ KAIST SoC 22
 
 **User Page**
 
-![유저 계정 정보 화면](./image1.png)
+![유저 계정 정보 화면](./readmeContent/image1.png)
 
 ![유저 팀 구성 화면](./readmeContent/image2.png)
 
@@ -145,7 +145,7 @@ team과 student는 many-to-many 관계를 가지고 있습니다.
 # DB Schema
 
 
-![DB 스키마](https://prod-files-secure.s3.us-west-2.amazonaws.com/f6cb388f-3934-47d6-9928-26d2e10eb0fc/1097defa-fcb9-4c13-98b3-b6e9429ac0ed/Untitled_(1).png)
+![DB 스키마](./readmeContent/image3.png)
 
 # Github repository
 
